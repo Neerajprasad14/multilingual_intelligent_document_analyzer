@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    ports: ["8501:8501"]
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/intelligent_document_analyzer
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+    volumes: ["app_data:/app/data"]
+    depends_on:
+      db:
+        condition: service_healthy
+    extra_hosts: ["host.docker.internal:host-gateway"]
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: intelligent_document_analyzer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d intelligent_document_analyzer"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+volumes:
+  app_data:
+  postgres_data:

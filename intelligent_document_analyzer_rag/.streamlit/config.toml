@@ -1,0 +1,20 @@
+[theme]
+base = "dark"
+primaryColor = "#8B5CF6"
+backgroundColor = "#0B1020"
+secondaryBackgroundColor = "#151B31"
+textColor = "#E8EAF2"
+borderColor = "#2B3658"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap"
+baseRadius = "large"
+buttonRadius = "full"
+showWidgetBorder = true
+showSidebarBorder = true
+chartCategoricalColors = ["#8B5CF6", "#22D3EE", "#34D399", "#F59E0B", "#FB7185"]
+
+[theme.sidebar]
+backgroundColor = "#0E1427"
+secondaryBackgroundColor = "#171F38"
+textColor = "#E8EAF2"
+borderColor = "#2B3658"

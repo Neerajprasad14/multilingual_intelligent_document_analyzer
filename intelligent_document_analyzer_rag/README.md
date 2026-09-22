@@ -65,6 +65,17 @@ streamlit run app.py
 
 Open the URL shown by Streamlit, upload a PDF/DOCX/TXT document and click **Analyze Document**.
 
+## Run with Docker
+
+Docker Compose starts the Streamlit app and PostgreSQL. Ollama stays on your host so it can use your existing local model.
+
+```bash
+ollama pull llama3.2:3b
+docker compose up --build
+```
+
+Open `http://localhost:8501`. Tables are created automatically. Set `OLLAMA_MODEL` or `OLLAMA_BASE_URL` before starting Compose if needed.
+
 ## Important note
 
 The "advantages" and "disadvantages" are evidence-based document analysis, not professional legal, financial or medical advice. For contracts or high-stakes documents, verify important conclusions with a qualified professional.
